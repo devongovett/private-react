@@ -1,0 +1,12 @@
+{
+  "name": "parcel-reporter-react-manifest",
+  "version": "1.0.0",
+  "private": true,
+  "main": "ParcelReporterReactManifest.js",
+  "engines": {
+    "parcel": ">= 2.0.0-beta.1"
+  },
+  "dependencies": {
+    "@parcel/plugin": "nightly"
+  }
+}

@@ -18,6 +18,6 @@ ReactDOM.render(
   document.getElementById('root')
 );
 
-// Create entry points for Client Components.
-// TODO: Webpack plugin should do this.
-require.context('./', true, /\.client\.js$/, 'lazy');
+// Reference server entrypoints so we know what client bundles to produce
+// TODO: how should this be done?
+() => import('./App.server.js');

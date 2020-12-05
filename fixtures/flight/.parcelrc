@@ -1,0 +1,7 @@
+{
+  "extends": "@parcel/config-default",
+  "transformers": {
+    "*.server.js": ["parcel-transformer-react-server"]
+  },
+  "reporters": ["...", "parcel-reporter-react-manifest"]
+}

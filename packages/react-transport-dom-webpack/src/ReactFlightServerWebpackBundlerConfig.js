@@ -44,5 +44,10 @@ export function resolveModuleMetaData<T>(
   config: BundlerConfig,
   moduleReference: ModuleReference<T>,
 ): ModuleMetaData {
-  return config[moduleReference.filepath][moduleReference.name];
+  // Override the module reference name for now.
+  // TODO: we need to expse module exports symbols in parcel
+  return {
+    ...config[moduleReference.filepath]['*'],
+    name: moduleReference.name
+  };
 }

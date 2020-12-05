@@ -36,7 +36,8 @@ export function preloadModule<T>(moduleData: ModuleReference<T>): void {
     const chunkId = chunks[i];
     const entry = chunkCache.get(chunkId);
     if (entry === undefined) {
-      const thenable = __webpack_chunk_load__(chunkId);
+      // TODO: only preload here don't execute. Need's parcel support.
+      const thenable = module.bundle.root(chunkId);
       const resolve = chunkCache.set.bind(chunkCache, chunkId, null);
       const reject = chunkCache.set.bind(chunkCache, chunkId);
       thenable.then(resolve, reject);
@@ -59,7 +60,7 @@ export function requireModule<T>(moduleData: ModuleReference<T>): T {
       throw entry;
     }
   }
-  const moduleExports = __webpack_require__(moduleData.id);
+  const moduleExports = module.bundle.root(moduleData.id);
   if (moduleData.name === '*') {
     // This is a placeholder value that represents that the caller imported this
     // as a CommonJS module as is.
